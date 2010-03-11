@@ -87,6 +87,11 @@ Data::Validator::Simple is a data validator but not only for form validation.
 
 =over 4
 
+=item ASCII
+
+  my $data = Data::Validator::Simple->new( data => 'abcde' );
+  $data->check( 'ASCII' );
+
 =item EQUAL_TO
 
   my $data = Data::Validator::Simple->new( data => 5 );
