@@ -2,7 +2,6 @@ package Data::Validator::Simple;
 use strict;
 use warnings;
 our $VERSION = '0.01';
-use String::CamelCase qw( camelize );
 use Carp;
 use Data::Validator::Simple::Checker;
 
