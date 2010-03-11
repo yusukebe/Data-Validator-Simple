@@ -13,11 +13,17 @@ inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 inc/Test/More.pm
 lib/Data/Validator/Simple.pm
+lib/Data/Validator/Simple/Form.pm
+lib/Data/Validator/Simple/Checker.pm
 Makefile.PL
-MANIFEST			This list of files
+MANIFEST        This list of files
 META.yml
 README
 t/00_compile.t
+t/11_complex.t
+t/10_basic.t
+t/12_checker.t
+t/13_form.t
 xt/01_podspell.t
 xt/02_perlcritic.t
 xt/03_pod.t

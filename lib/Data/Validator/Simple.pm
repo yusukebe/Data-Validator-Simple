@@ -1,8 +1,8 @@
 package Data::Validator::Simple;
 use strict;
 use warnings;
-our $VERSION = '0.01';
-use Carp;
+our $VERSION = '0.01_01';
+use Carp ();
 use Data::Validator::Simple::Checker;
 
 sub new {

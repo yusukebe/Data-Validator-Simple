@@ -2,7 +2,7 @@ use inc::Module::Install;
 name 'Data-Validator-Simple';
 all_from 'lib/Data/Validator/Simple.pm';
 
-# requires '';
+requires 'Carp';
 
 tests 't/*.t';
 author_tests 'xt';
