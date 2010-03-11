@@ -109,7 +109,7 @@ Data::Validator::Simple is a data validator but not only for form validation.
   my $data = Data::Validator::Simple->new( data => 5 );
   $data->check( [ 'GREATER_THAN', 4 ] );
 
-=item BETWEEN
+=item LESS_THAN
 
   my $data = Data::Validator::Simple->new( data => 5 );
   $data->check( [ 'LESS_THAN', 6 ] );
