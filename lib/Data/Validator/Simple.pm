@@ -30,8 +30,12 @@ sub _validate {
         $params = $condition->{rule};
         $success = $condition->{success};
     }else{
-        $rule = shift @$condition;
-        $params = $condition;
+        if( ref $condition eq 'ARRAY' ){
+            $rule = shift @$condition;
+            $params = $condition;
+        }else{
+            $rule = $condition;
+        }
     }
     my $result;
     eval { $result = $self->{checker}->$rule( $self->{data}, $params ) };

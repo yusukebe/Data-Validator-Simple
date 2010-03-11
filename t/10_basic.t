@@ -9,6 +9,8 @@ use_ok('Data::Validator::Simple');
     ok( $data, 'Make instance' );
     my $result = $data->check( [ 'BETWEEN', 4, 50 ] );
     ok( $result, 'Result is "valid"' );
+    $result = $data->check( 'ASCII' );
+    ok( $result, 'ASCII rule' );
     eval { $data->check(['RULE_NOT_FOUND']) };
     ok( $@, 'Rule not found in chcker' );
 }

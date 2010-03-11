@@ -8,6 +8,11 @@ sub new {
     $self;
 }
 
+sub ASCII {
+    my ( $self, $data ) = @_;
+    return $data =~ /^[\x21-\x7E]+$/;
+}
+
 sub EQUAL_TO {
     my ( $self, $data, $params ) = @_;
     if( $data =~ /\d+/ && $params->[0] =~ /\d+/){

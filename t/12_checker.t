@@ -28,4 +28,10 @@ ok( $checker, 'Make instance');
     ok( $checker->LESS_THAN( 5, [ 6 ] ), 'LESS_THAN: true' );
 }
 
+{
+    use utf8;
+    ok( $checker->ASCII( 'abcd' ), 'ASCII: true' );
+    ok( !$checker->ASCII( '日本語' ), 'ASCII: false' );
+}
+
 done_testing;
