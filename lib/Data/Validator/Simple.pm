@@ -55,7 +55,7 @@ __END__
 
 =head1 NAME
 
-Data::Validator::Simple - Simple "single" data validator. Not only for form validator.
+Data::Validator::Simple - Simple data validator. Not only for form validator.
 
 =head1 SYNOPSIS
 
