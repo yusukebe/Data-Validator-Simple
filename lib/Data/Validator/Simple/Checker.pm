@@ -17,11 +17,31 @@ sub EQUAL_TO {
     }
 }
 
+sub LENGTH {
+    my ( $self, $data, $params ) = @_;
+    my $length = length $data;
+    if( defined $params->[1] ){
+        return $params->[0] <= $length && $length <= $params->[1];
+    }else{
+        return $length == $params->[0];
+    }
+}
+
 sub BETWEEN {
     my ( $self, $data, $params ) = @_;
     my $start = $params->[0];
     my $end = $params->[1];
     return $data >= $start && $data <= $end;
+}
+
+sub GREATER_THAN {
+    my ( $self, $data, $params ) = @_;
+    return $data > $params->[0];
+}
+
+sub LESS_THAN {
+    my ( $self, $data, $params ) = @_;
+    return $data < $params->[0];
 }
 
 1;

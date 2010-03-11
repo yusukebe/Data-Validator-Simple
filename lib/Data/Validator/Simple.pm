@@ -46,7 +46,7 @@ __END__
 
 =head1 NAME
 
-Data::Validator::Simple - Simple data validator. Not only for form validator.
+Data::Validator::Simple - Simple "single" data validator. Not only for form validator.
 
 =head1 SYNOPSIS
 
@@ -60,7 +60,8 @@ Data::Validator::Simple - Simple data validator. Not only for form validator.
     print "error";
   }
 
-  # get message if success
+complex pattern
+
   my $data = Data::Validator::Simple->new( data => 5 );
   my $result = $data->check(
       {
@@ -90,10 +91,28 @@ Data::Validator::Simple is a data validator but not only for form validation.
   $data = Data::Validator::Simple->new( data => 'Hello' );
   $data->check( [ 'EQUAL_TO', 'Hello' ] );
 
+=item LENGTH
+
+  my $data = Data::Validator::Simple->new( data => 'Hello' );
+  $data->check( [ 'LENGTH', 5 ] );
+
+  $data = Data::Validator::Simple->new( data => 'Hello' );
+  $data->check( [ 'LENGTH', 4, 6 ] );
+
 =item BETWEEN
 
   my $data = Data::Validator::Simple->new( data => 5 );
   $data->check( [ 'BETWEEN', 2, 10 ] );
+
+=item GREATER_THAN
+
+  my $data = Data::Validator::Simple->new( data => 5 );
+  $data->check( [ 'GREATER_THAN', 4 ] );
+
+=item BETWEEN
+
+  my $data = Data::Validator::Simple->new( data => 5 );
+  $data->check( [ 'LESS_THAN', 6 ] );
 
 =back
 

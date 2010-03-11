@@ -14,8 +14,18 @@ ok( $checker, 'Make instance');
 }
 
 {
+    ok( $checker->LENGTH( 'Hello', [ 5 ] ), 'LENGTH: single true' );
+    ok( $checker->LENGTH( 'Hello', [ 4, 6 ] ), 'LENGTH: between true' );
+}
+
+{
     ok( $checker->BETWEEN( 5, [ 4, 6 ] ), 'BETWEEN: true' );
     ok( !$checker->BETWEEN( 5, [ 6, 10 ] ), 'BETWEEN: false' );
+}
+
+{
+    ok( $checker->GREATER_THAN( 5, [ 4 ] ), 'GREATER_THAN: true' );
+    ok( $checker->LESS_THAN( 5, [ 6 ] ), 'LESS_THAN: true' );
 }
 
 done_testing;
