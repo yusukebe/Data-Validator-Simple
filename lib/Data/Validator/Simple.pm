@@ -22,6 +22,11 @@ sub check {
     return;
 }
 
+sub form {
+    require Data::Validator::Simple::Form;
+    return Data::Validator::Simple::Form->new;
+}
+
 sub _validate {
     my ( $self, $condition ) = @_;
     my ($rule, $params, $success);
@@ -78,6 +83,25 @@ complex pattern
       }
   );
   print $result; # second_message
+
+if want to use as form validator
+
+  my $q = CGI->new;
+  $q->param( id   => 'login_id' );
+  $q->param( name => 'user_name' );
+  my %params = $q->Vars;
+
+  my $form = Data::Validator::Simple->form;
+  my $results = $form->check(
+      \%params,
+      {
+          id => [ 'ASCII', [ 'LENGTH', 4, 10 ] ],
+          name => [ 'LENGTH', 4, 20  ]
+      }
+   );
+  if( $results->{id} && $results->{name} ){
+    print "valid";
+  }
 
 =head1 DESCRIPTION
 
