@@ -8,3 +8,4 @@ __DATA__
 Yusuke Wada
 yusuke at kamawada.com
 Data::Validator::Simple
+validator
