@@ -78,11 +78,32 @@ Data::Validator::Simple - Simple data validator. Not only for form validator.
 
 Data::Validator::Simple is a data validator but not only for form validation.
 
+=head1 VALIDATION RULES
+
+=over 4
+
+=item EQUAL_TO
+
+  my $data = Data::Validator::Simple->new( data => 5 );
+  $data->check( [ 'EQUAL_TO', 5 ] );
+
+  $data = Data::Validator::Simple->new( data => 'Hello' );
+  $data->check( [ 'EQUAL_TO', 'Hello' ] );
+
+=item BETWEEN
+
+  my $data = Data::Validator::Simple->new( data => 5 );
+  $data->check( [ 'BETWEEN', 2, 10 ] );
+
+=back
+
 =head1 AUTHOR
 
 Yusuke Wada E<lt>yusuke at kamawada.comE<gt>
 
 =head1 SEE ALSO
+
+L<FormValidator::Simple>
 
 =head1 LICENSE
 

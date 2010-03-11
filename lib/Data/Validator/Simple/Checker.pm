@@ -10,7 +10,11 @@ sub new {
 
 sub EQUAL_TO {
     my ( $self, $data, $params ) = @_;
-    return $data == $params->[0];
+    if( $data =~ /\d+/ && $params->[0] =~ /\d+/){
+        return $data == $params->[0];
+    }else{
+        return $data eq $params->[0];
+    }
 }
 
 sub BETWEEN {
