@@ -1,10 +1,13 @@
 package Data::Validator::Simple::Checker;
 use strict;
 use warnings;
+use Data::Validator::Simple::Types;
 
 sub new {
     my ( $class, %opt ) = @_;
     my $self = bless {}, $class;
+    $self->{type} = Data::Validator::Simple::Types->new( type => $opt{type} )
+      if $opt{type};
     $self;
 }
 
@@ -34,18 +37,23 @@ sub LENGTH {
 
 sub BETWEEN {
     my ( $self, $data, $params ) = @_;
-    my $start = $params->[0];
-    my $end = $params->[1];
+    $data = $self->{type} ? $self->{type}->to_number( $data ) : $data;
+    my $start = $self->{type} ? $self->{type}->to_number($params->[0]) : $params->[0];
+    my $end = $self->{type} ? $self->{type}->to_number($params->[1]) : $params->[1];
     return $data >= $start && $data <= $end;
 }
 
 sub GREATER_THAN {
     my ( $self, $data, $params ) = @_;
+    $data = $self->{type} ? $self->{type}->to_number( $data ) : $data;
+    $params->[0] = $self->{type}->to_number($params->[0]) if $self->{type};
     return $data > $params->[0];
 }
 
 sub LESS_THAN {
     my ( $self, $data, $params ) = @_;
+    $data = $self->{type} ? $self->{type}->to_number( $data ) : $data;
+    $params->[0] = $self->{type}->to_number($params->[0]) if $self->{type};
     return $data < $params->[0];
 }
 

@@ -29,4 +29,11 @@ use_ok('Data::Validator::Simple');
     is( $result, 'failed', "Got failed mssage" );
 }
 
+# date type
+{
+  my $data = Data::Validator::Simple->new( data => [ '2010', '3', '15' ], as => 'DATE' );
+  my $result = $data->check( [ 'BETWEEN', [ '2010', '3', '14' ] , [ '2010', '4', '1' ] ] );
+  ok(  $result, "Check DATE type is success" );
+}
+
 done_testing;

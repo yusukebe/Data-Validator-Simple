@@ -7,12 +7,12 @@ use Data::Validator::Simple::Checker;
 
 sub new {
     my ( $class, %opt ) = @_;
-    my $checker = Data::Validator::Simple::Checker->new;
     my $self    = bless {
         data            => $opt{data},
         default_message => $opt{failed},
-        checker         => $checker
     }, $class;
+    my $checker = Data::Validator::Simple::Checker->new( type => $opt{as} );
+    $self->{checker} = $checker;
     $self;
 }
 
@@ -47,7 +47,7 @@ sub _validate {
         }
     }
     my $result;
-    eval { $result = $self->{checker}->$rule( $self->{data}, $params ) };
+    eval { $result = $self->{checker}->$rule( $self->{data}, $params ); };
     Carp::croak("Can't load \"$rule\" rule\n") if $@;
     return $success if $success && $result;
     return $self->{default_message} if defined $self->{default_message};
