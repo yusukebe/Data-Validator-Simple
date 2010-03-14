@@ -22,4 +22,11 @@ use_ok('Data::Validator::Simple');
     ok( !$result, 'Result is "invalid"' );
 }
 
+# failed message
+{
+    my $data = Data::Validator::Simple->new( data => 5 , failed => 'failed' );
+    my $result = $data->check( [ 'EQUAL_TO', 4 ] );
+    is( $result, 'failed', "Got failed mssage" );
+}
+
 done_testing;
