@@ -1,4 +1,5 @@
 Revision history for Perl extension Data::Validator::Simple
 
-0.01_01   Thu Mar 11 11:14:12 2010
-        - original version
+0.01_01  - original version
+
+0.01_02  - Support DATE type, Modified document.
